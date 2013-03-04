@@ -1,0 +1,14 @@
+extends ../layout
+
+block content
+  script(type="text/template")#tmpltposts
+    <% _.each(posts, function (post) { %>
+    div.post
+      h2 <%= post.title %>
+      p <%= post.body %>
+    <% }); %>
+
+block append inlineScripts
+  script
+    var tmpltposts = _.template($("#tmpltposts").html());
+      $('body').html(tmpltposts({posts:!{posts}}));

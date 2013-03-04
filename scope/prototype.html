@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <meta charset="utf-8"/>
+
+  <head>
+    <title></title>
+    
+</head>
+  <body>
+      <script type = "text/javascript">
+var Dogs = (function () {
+      var Canine = function(){
+        this.type = "toothless";//in this blueprint, this - goes with instance
+        console.log(this);
+        this.bark = function() {  //creates new instance, not inherit
+          console.log(this.type+ "bark!");
+        };
+        
+      };
+        Canine(); 
+      Canine.prototype.bite = function () { //all dogs bite
+        console.log('This is a ' + this.type + 'bite');
+};
+      var Dog = function(type){
+        this.type = type || 'small but annoying';//this points to the instance, so Spot
+
+      };
+
+      Dog.prototype = new Canine();//canine function is being executed
+      // Dog.prototype = {
+      //   type: 'toothless'
+      //   bark: function(loudness) {
+
+      //   }
+      //   bite: function() {
+
+      //   }
+      //   instance: new Something()
+      // }
+
+
+      var Spot = new Dog('spotty'); //spot is an instance, separate from dog
+      //Spot.bite(); //follows prototype chain
+      var Rufus = new Dog('rufus');
+      
+      return {Spot: Spot, Rufus: Rufus, Mutt: new Canine()}; //revealing module pattern, returning object from namespace
+      
+
+    })();
+Dogs.Mutt.bite();  
+Dogs.Spot.bark();
+Dogs.Rufus.bark();//forcing the word Rufus to be this. bite refers to one function
+
+    </script> 
+
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+  <meta charset="utf-8"/>
+
+  <head>
+    <title></title>
+    
+</head>
+  <body>
+    <script type = "text/javascript">
+
+      (function () {
+        var factor = function(n){
+
+          var finalResult = n*n;
+          var factorAgain = function (){
+            var result = finalResult*2;
+            return result;
+          }
+          return factorAgain();
+        };
+
+        console.log(factor(2));
+      })();
+
+// 3 separate scopes above. inner can reach out, out cant reach in
+
+
+
+
+    
+    // (function ns(type){
+    //   var color = "periwinkle blue"
+    //   console.log(this);
+    //   console.log(color);
+    // }).call(1234);  //where the word this points to. how that becomes this
+    //   console.log(color);
+
+
+    </script> 
+
+  </body>
+</html>
